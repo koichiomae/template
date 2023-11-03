@@ -15,13 +15,13 @@ type Story = StoryObj<typeof Button>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
+
+const data = {
+  text: 'test',
+  onClick: () => {
+    console.log('test');
+  },
+};
 export const Primary: Story = {
-  render: () => (
-    <Button
-      text='text'
-      onClick={() => {
-        console.log('button');
-      }}
-    />
-  ),
+  args: { ...data },
 };
