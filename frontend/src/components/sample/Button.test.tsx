@@ -1,10 +1,19 @@
-import React from 'react';
 import { Button } from './Button';
 import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
-describe('Home', () => {
-  it('renders a heading', () => {
-    render(<Button />);
-    expect(screen.getByTestId('button1').textContent).toBe('Click');
+describe('Smaple', () => {
+  it('サンプル用1', async () => {
+    const mock = jest.fn();
+    render(<Button text='test' onClick={mock} />);
+
+    const button = screen.getByTestId('button-count-up');
+    expect(button.textContent).toBe('test');
+
+    expect(mock).toHaveBeenCalledTimes(0);
+
+    await userEvent.click(button);
+
+    expect(mock).toHaveBeenCalledTimes(1);
   });
 });
